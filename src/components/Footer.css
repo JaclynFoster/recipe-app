@@ -1,0 +1,47 @@
+.footer {
+    width: 100vw;
+    background-color: rgb(83, 91, 91);
+    height: 150px;
+    position: fixed;
+    bottom: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  
+}
+
+.icon-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding-left: 28%;
+  width: 17vw;
+   
+}
+
+.dev-logo{
+    float: right;
+    padding-right: 40px;
+    padding-top: 15px;
+   
+}
+
+.footer-title {
+    color: white;
+    font-size: 25px;
+    font-family: sans-serif;
+    padding-left: 25%;
+    width: 20vw;
+    padding-bottom: 15px;
+}
+
+.icon {
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    background-color: rgb(69, 118, 118);
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
