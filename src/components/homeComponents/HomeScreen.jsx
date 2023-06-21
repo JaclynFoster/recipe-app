@@ -58,9 +58,14 @@ const HomeScreen = () => {
         />
       </div>
 
+      <div className="card-container">
       {checkFilter().map(recipe => {
-        return <RecipeCard recipe={recipe} />
+        return (
+        <RecipeCard recipe={recipe} />
+        )
       })}
+      <RecipeCard recipe={recipe} />
+      </div>
     </div>
   )
 }
