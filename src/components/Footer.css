@@ -2,8 +2,10 @@
     width: 100vw;
     background-color: rgb(83, 91, 91);
     height: 150px;
-    position: fixed;
+    position: block;
     bottom: 0;
+    left: 0;
+    right: 0;
     display: flex;
     justify-content: space-between;
     align-items: center;

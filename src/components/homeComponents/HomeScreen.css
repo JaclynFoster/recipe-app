@@ -1,0 +1,30 @@
+.search {
+    width: 400px;
+    border-radius: 50px;
+    height: 35px;
+    padding: 10px;
+    padding-left: 55px;
+    background-color: rgb(244, 187, 167, 0.3);
+    border: none;
+    font-size: 20px;
+    color: darkslategray;
+}
+
+.search-icon {
+    position: absolute;
+    padding: 10px;
+    min-width: 50px;
+    color: rgb(235, 76, 18);
+   
+    
+}
+
+.search-container {
+    position: relative;
+    width: 60vw;
+    margin-bottom: 50px;
+    margin-top: 30px;
+    left: 36%;
+    
+  
+}

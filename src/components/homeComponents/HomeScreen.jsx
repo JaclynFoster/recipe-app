@@ -1,32 +1,68 @@
 import React, { useEffect, useState } from 'react'
 import AdBanner from './AdBanner'
 import axios from 'axios'
+import RecipeCard from '../../UI/RecipeCard'
+import { BsSearch } from 'react-icons/bs'
+import './HomeScreen.css'
 
+const HomeScreen = () => {
+  const [recipe, setRecipes] = useState([])
+  const [searchRecipe, setSearchRecipe] = useState({ query: '', result: [] })
+  const getRecipes = () => {
+    axios
+      .get('https://recipes.devmountain.com/recipes')
+      .then(res => {
+        setRecipes(res.data)
+        console.log(res.data)
+      })
+      .catch(err => {
+        console.log('error on getRecipes:', err)
+      })
+  }
 
-const HomeScreen = () => {  
-  const {recipes, setRecipes} = useState
-const getRecipes = () => {
- axios.get('https://recipes.devmountain.com/recipes')
- .then(res => {
-  setRecipes(res.data)
-  console.log(res.data)
- })
- .catch(err => {
-  console.log("error on getRecipes:", err)
- })
-}
-useEffect(() => {
-  getRecipes()
-}, [])
+  const searchResults = e => {
+    const results = recipe.filter(recipe => {
+      let title = recipe.recipe_name.toLowerCase()
+      let params = e.target.value.toLowerCase()
+      if (e.target.value === '') return recipe
+      return title.includes(params)
+    })
+    setSearchRecipe({
+      query: e.target.value,
+      result: results
+    })
+  }
+
+  const checkFilter = () => {
+    if (searchRecipe.query.length > 0) {
+      return searchRecipe.result
+    }
+    return recipe
+  }
+
+  useEffect(() => {
+    getRecipes()
+  }, [])
 
   return (
     <div>
       <AdBanner />
-  
-      {/* Much code from Part 2 will be placed around here. Do your best! */}
+      <div className="search-container">
+        <BsSearch className="search-icon" />
+        <input
+          placeholder="Search for a Recipe"
+          type="search"
+          className="search"
+          value={searchRecipe.query}
+          onChange={searchResults}
+        />
+      </div>
+
+      {checkFilter().map(recipe => {
+        return <RecipeCard recipe={recipe} />
+      })}
     </div>
   )
-
 }
 
 export default HomeScreen
