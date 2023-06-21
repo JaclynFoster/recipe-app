@@ -9,7 +9,7 @@ const DetailScreen = ({ recipe, setRecipes }) => {
   const { id } = useParams()
   const getDetails = () => {
     axios
-      .get(`/recipes/${id}`)
+      .get(`https://recipes.devmountain.com/recipes/${id}`)
       .then(res => {
         setRecipes(res.data)
         console.log(res.data)
