@@ -13,7 +13,7 @@
 }
 .detail-image {
     height: 400px;
-    width: 100%;
+    max-width: 100%;
     filter: brightness(50%);
 }
 
@@ -28,13 +28,7 @@
    padding: 1rem;
 }
 
-.instructions {
-    width: 500px;
-    text-align: center;
-    background-color: grey;
-    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-    margin-left: 25px;
-}
+
 .cooktime {
     display: flex;
     flex-direction: column;
@@ -43,7 +37,7 @@
     margin-top: 20px;
 }
 
-.ingredients {
+.ingredients-holder {
     display: flex;
     flex-direction: column;
     flex-wrap: nowrap;
@@ -65,17 +59,12 @@ span {
 }
 
 .instructions {
-    padding: 1rem ;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
-    background-color: white;
-    width: 50%;
-    text-align: left;
-    margin-top: 30px;
-    margin-left: 45px;
+  
     display: flex;
     flex-direction: column;
     flex-wrap: nowrap;
     justify-content: space-around;
+   
    
 }
 
@@ -84,6 +73,7 @@ p {
     font-family: sans-serif;
     margin: 10px;
     white-space: pre-wrap;
+    padding-top: 15px;
 }
 
 
@@ -92,4 +82,19 @@ p {
     color: black;
     font-size: 30px;
     margin-left: 30%;
+}
+
+.ingredients {
+    text-align: left;
+    padding: 5px;
+}
+
+.instructions-container {
+    padding: 1rem ;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+    background-color: white;
+    width: 50%;
+    text-align: left;
+    margin-top: 30px;
+    margin-left: 45px;
 }

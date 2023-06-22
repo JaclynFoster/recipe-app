@@ -6,14 +6,14 @@ import DetailScreen from './components/detailComponents/DetailScreen'
 import HomeScreen from './components/homeComponents/HomeScreen'
 import { Routes, Route } from 'react-router-dom'
 
-function App () {
+function App ({details, setDetails}) {
   return (
     <div className="App">
       <Header />
       <Routes>
         <Route index element={<HomeScreen />} />
         <Route path="newRecipe" element={<NewRecipeScreen />} />
-        <Route path="recipe/:id" element={<DetailScreen />} />
+        <Route path="recipe/:id" element={<DetailScreen details={details} setDetails={setDetails}/>} />
       </Routes>
       {/* This is where you will code for some of Part 1. */}
       <Footer />

@@ -5,13 +5,16 @@ import salmon from '../../assets/salmon.jpg'
 import './DetailScreen.css'
 import { useParams } from 'react-router-dom'
 
-const DetailScreen = ({ recipe, setRecipes }) => {
+const DetailScreen = () => {
   const { id } = useParams()
+  const [details, setDetails] = useState([])
+
+  console.log('id', id)
   const getDetails = () => {
     axios
       .get(`https://recipes.devmountain.com/recipes/${id}`)
       .then(res => {
-        setRecipes(res.data)
+        setDetails(res.data)
         console.log(res.data)
       })
       .catch(err => {
@@ -21,62 +24,40 @@ const DetailScreen = ({ recipe, setRecipes }) => {
 
   useEffect(() => {
     getDetails()
-  })
+  }, [])
 
   return (
     <section className="detail">
-      <img className="detail-image" src={salmon} />
+      <img className="detail-image" src={details.image_url} />
 
       <div className="detail-container">
         <div className="ingredients-container">
           <div className="cooktime">
-            <h1 className="name">Recipe Name</h1>
-            <span>Prep Time: 15 minutes</span>
-            <span>Cook Time: 60 minutes</span>
-            <span>Serves: 4</span>
+            <h1 className="name">{details.recipe_name}</h1>
+            <span>Prep Time: {details.prep_time}</span>
+            <span>Cook Time: {details.cook_time}</span>
+            <span>Serves: {details.serves}</span>
           </div>
-          <div className="ingredients">
+          <div className="ingredients-holder">
             <h1 className="name">Ingredients:</h1>
-
-            <span>5 tsp That</span>
-            <span>3 cups of whatever</span>
-            <span>Spoonful of Sugar</span>
-            <span>Dash of Awesome</span>
+            {details.ingredients &&
+              details.ingredients.map(ingredient => {
+                return (
+                  <h4 className="ingredients">
+                    {ingredient.quantity}
+                    {ingredient.ingredient}
+                  </h4>
+                )
+              })}
           </div>
         </div>
-        <div className="instructions">
+        <div className="instructions-container">
           <h1 className="instruct-title">Instructions:</h1>
-
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua.
-            Porttitor rhoncus dolor purus non enim praesent elementum. Vitae
-            proin sagittis nisl rhoncus mattis rhoncus urna neque. Leo vel
-            fringilla est ullamcorper eget nulla. Mollis aliquam ut porttitor
-            leo a diam sollicitudin. Proin sed libero enim sed faucibus. Magna
-            ac placerat vestibulum lectus mauris ultrices eros in. Non diam
-            phasellus vestibulum lorem. Faucibus turpis in eu mi bibendum neque.
-            Amet dictum sit amet justo donec enim diam vulputate ut. Purus
-            gravida quis blandit turpis cursus.
-          </p>
-          <p>
-            Mi tempus imperdiet nulla malesuada pellentesque elit eget gravida
-            cum. Volutpat maecenas volutpat blandit aliquam etiam erat velit.
-            Maecenas accumsan lacus vel facilisis. Purus in massa tempor nec
-            feugiat nisl. Sagittis nisl rhoncus mattis rhoncus urna neque
-            viverra. Non pulvinar neque laoreet suspendisse. Nunc id cursus
-            metus aliquam eleifend mi in nulla posuere. Neque sodales ut etiam
-            sit amet nisl purus in mollis. Quam viverra orci sagittis eu
-            volutpat. Nulla malesuada pellentesque elit eget gravida. Dictumst
-            vestibulum rhoncus est pellentesque elit ullamcorper dignissim cras.
-            Hendrerit dolor magna eget est lorem ipsum dolor sit. Risus feugiat
-            in ante metus. Dictum at tempor commodo ullamcorper a lacus
-            vestibulum sed arcu. Consequat nisl vel pretium lectus. Eleifend mi
-            in nulla posuere. Fermentum odio eu feugiat pretium nibh ipsum
-            consequat nisl. Tortor dignissim convallis aenean et tortor.
-            Bibendum enim facilisis gravida neque convallis a. Sollicitudin ac
-            orci phasellus egestas tellus rutrum tellus pellentesque eu.
-          </p>
+          <div>
+            <p className="instructions">
+              {details.instructions && JSON.parse(details.instructions)}
+            </p>
+          </div>
         </div>
       </div>
     </section>
@@ -84,4 +65,5 @@ const DetailScreen = ({ recipe, setRecipes }) => {
 }
 
 export default DetailScreen
+
 
