@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Formik } from 'formik'
+import { Formik, Form } from 'formik'
 import axios from 'axios'
 import './NewRecipe.css'
 
@@ -30,15 +30,8 @@ const NewRecipeScreen = () => {
       .post(`https://recipes.devmountain.com/recipes`, values)
       .then(res => {
         values.ingredients = ingredients
-        // values.type = ""
-        // values.recipeName = ""
-        // values.imageURL = ""
-        // values.prepTime = ""
-        // values.cookTime = ""
-        // values.serves = ""
-        // values.instructions = ""
 
-        // setIngredients([...ingredients, { name, quantity }])
+        setIngredients([...ingredients, { name, quantity }])
         console.log('values:', values, ingredients)
         console.log(res.data)
       })
@@ -138,10 +131,7 @@ const NewRecipeScreen = () => {
                   placeholder="Quantity"
                 />
               </div>
-              <ul className="ingredient-list">
-                <li>test</li>
-                <li>test</li>
-              </ul>
+
               {ingredients.map(ingredient => {
                 return (
                   <ul className="ingredient-list">
@@ -173,6 +163,7 @@ const NewRecipeScreen = () => {
 }
 
 export default NewRecipeScreen
+
 
 
 
