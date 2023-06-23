@@ -66,7 +66,7 @@ const NewRecipeScreen = () => {
               <input
                 className="recipe-radio"
                 onChange={handleChange}
-                value={values.type}
+                value="Cook"
                 type="radio"
                 placeholder="Cook"
                 name="type"
@@ -75,7 +75,7 @@ const NewRecipeScreen = () => {
               <input
                 className="recipe-radio"
                 onChange={handleChange}
-                value={values.type}
+                value="Bake"
                 type="radio"
                 placeholder="Bake"
                 name="type"
@@ -84,7 +84,7 @@ const NewRecipeScreen = () => {
               <input
                 className="recipe-radio"
                 onChange={handleChange}
-                value={values.type}
+                value="Drink"
                 type="radio"
                 placeholder="Drink"
                 name="type"
