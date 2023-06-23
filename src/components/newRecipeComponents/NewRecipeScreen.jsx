@@ -7,6 +7,7 @@ const NewRecipeScreen = () => {
   const [ingredients, setIngredients] = useState([])
   const [name, setName] = useState('')
   const [quantity, setQuantity] = useState('')
+  
 
   const initialValues = {
     type: '',
@@ -20,18 +21,17 @@ const NewRecipeScreen = () => {
   }
 
   const addIngredient = () => {
+
     setIngredients([...ingredients, { name, quantity }])
     setName('')
     setQuantity('')
   }
 
   const onSubmit = values => {
+     values.ingredients = ingredients
     axios
       .post(`https://recipes.devmountain.com/recipes`, values)
       .then(res => {
-        values.ingredients = ingredients
-
-        setIngredients([...ingredients, { name, quantity }])
         console.log('values:', values, ingredients)
         console.log(res.data)
       })
@@ -69,7 +69,7 @@ const NewRecipeScreen = () => {
                 value={values.type}
                 type="radio"
                 placeholder="Cook"
-                name="cook"
+                name="type"
               />
               <label className="label">Cook</label>
               <input
@@ -78,7 +78,7 @@ const NewRecipeScreen = () => {
                 value={values.type}
                 type="radio"
                 placeholder="Bake"
-                name="bake"
+                name="type"
               />
               <label className="label">Bake</label>
               <input
@@ -87,7 +87,7 @@ const NewRecipeScreen = () => {
                 value={values.type}
                 type="radio"
                 placeholder="Drink"
-                name="drink"
+                name="type"
               />
               <label className="label">Drink</label>
             </div>

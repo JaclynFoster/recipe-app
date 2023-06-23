@@ -15,7 +15,7 @@ const DetailScreen = () => {
       .get(`https://recipes.devmountain.com/recipes/${id}`)
       .then(res => {
         setDetails(res.data)
-        console.log(res.data)
+        console.log("getDetails:", res.data)
       })
       .catch(err => {
         console.log('error on getDetails:', err)
@@ -40,15 +40,17 @@ const DetailScreen = () => {
           </div>
           <div className="ingredients-holder">
             <h1 className="name">Ingredients:</h1>
-            {details.ingredients &&
-              details.ingredients.map(ingredient => {
+            {details.ingredients && details.ingredients.map(ingredient => {
+              console.log("ingredient:", ingredient)
                 return (
+                  <div className="h4">
                   <h4 className="ingredients">
-                    {ingredient.quantity}
                     {ingredient.ingredient}
                   </h4>
+                    <h4 className="ingredients">{ingredient.quantity}</h4>
+                    </div>
                 )
-              })}
+             })}  
           </div>
         </div>
         <div className="instructions-container">
