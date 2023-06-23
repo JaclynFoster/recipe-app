@@ -59,15 +59,14 @@ const HomeScreen = () => {
       </div>
 
       <div className="card-container">
-      {checkFilter().map(recipe => {
-        return (
+        {checkFilter().map(recipe => {
+          return <RecipeCard recipe={recipe} />
+        })}
         <RecipeCard recipe={recipe} />
-        )
-      })}
-      <RecipeCard recipe={recipe} />
       </div>
     </div>
   )
 }
 
 export default HomeScreen
+

@@ -7,7 +7,6 @@ const NewRecipeScreen = () => {
   const [ingredients, setIngredients] = useState([])
   const [name, setName] = useState('')
   const [quantity, setQuantity] = useState('')
-  
 
   const initialValues = {
     type: '',
@@ -21,14 +20,13 @@ const NewRecipeScreen = () => {
   }
 
   const addIngredient = () => {
-
     setIngredients([...ingredients, { name, quantity }])
     setName('')
     setQuantity('')
   }
 
   const onSubmit = values => {
-     values.ingredients = ingredients
+    values.ingredients = ingredients
     axios
       .post(`https://recipes.devmountain.com/recipes`, values)
       .then(res => {
@@ -163,6 +161,7 @@ const NewRecipeScreen = () => {
 }
 
 export default NewRecipeScreen
+
 
 
 
